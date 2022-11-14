@@ -3,7 +3,7 @@ def pushs(stacks,value):
 	stacks=stacks+[value];
 	return stacks;
 def pops(stacks1):
-	sstacks={};
+	sstacks=[];
 	value=-1;
 	if len(stacks1)>0:
 		value=stacks1[len(stacks1)-1];
