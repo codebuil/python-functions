@@ -22,7 +22,7 @@ n=0;
 x=0;
 y=0;
 index=0
-setMem(matrix);
+setMem(matrix1);
 for index in range(0,8):
 	matrix1=wmem(matrix1,index,x,y);
 	x+=1;
