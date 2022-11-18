@@ -8,6 +8,7 @@ rets=[];
 y=0
 x=0
 t=1
+counter=0;
 root=Tk()
 ss=StringVar()
 ss.set(" ")
@@ -18,8 +19,14 @@ for y in range(0,8):
 
 
 def checkers():
+    global t
+    counter=0;
     while t > 0:
-        time.sleep(1)
+        time.sleep(2)
+	if counter>len(rets)-2:
+		t=0;
+	sbitmaps.itemconfig(rets[counter],fill="black")
+	counter+=1
     return 
 
 
