@@ -27,4 +27,4 @@ for index in range(0,8):
 	matrix1=wmem(matrix1,index,x,y);
 	x+=1;
 	y+=1;
-report(matrix);
+report(matrix1);
