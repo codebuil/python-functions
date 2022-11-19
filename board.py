@@ -5,6 +5,7 @@ import thread;
 from Tkinter import *
 import tkMessageBox;
 rets=[];
+tt=1
 y=0
 x=0
 t=1
@@ -28,24 +29,28 @@ def wram(indexs,value):
 		sbitmaps.itemconfig(rets[indexs],fill="white")	
 def checkers():
     global t
+    global tt
     global rets
     setram()
     counter=0;
     counter2=0;
     while t > 0:
         time.sleep(0.25)
-	if counter>len(rets)-2:
-		counter=0;
-		counter2+=1;
-		if counter2>1:
-			counter2=0;
-	wram(counter,counter2);
-	counter+=1
-    return 
+        if counter>len(rets)-1:
+            counter=0;
+            counter2+=1;
+            if counter2>1:
+                counter2=0;
+        if t==1:
+            wram(counter,counter2);
+        counter+=1
+    tt=0
+    print(tt)
+    return
 
 
 sbitmaps.pack() 
 thread.start_new_thread(checkers,())
 root.mainloop()            
 t=0
-
+time.sleep(1)
