@@ -6,6 +6,10 @@ from Tkinter import *
 import tkMessageBox;
 rets=[];
 tt=1
+#change bord w
+maxx=12
+#change bord h
+maxy=12
 y=0
 x=0
 t=1
@@ -18,15 +22,15 @@ def setram():
 	y=0
 	x=0
 	global rets
-	for y in range(0,8):
-		for x in range(0,8):
+	for y in range(0,maxy):
+		for x in range(0,maxx):
 			rets=rets+[sbitmaps.create_rectangle(x*20,y*20,x*20+18,y*20+18,fill="white")]
 def wram(indexs,x,y,value):
 	global rets	
-	if x<8 and y <8 and value==0:
-		sbitmaps.itemconfig(rets[y*8+x],fill="black")
-	if x<8 and y <8 and value!=0:
-		sbitmaps.itemconfig(rets[y*8+x],fill="white")	
+	if x<maxx and y <maxy and value==0:
+		sbitmaps.itemconfig(rets[y*maxx+x],fill="black")
+	if x<maxx and y <maxy and value!=0:
+		sbitmaps.itemconfig(rets[y*maxx+x],fill="white")	
 def checkers():
     global t
     global tt
@@ -37,10 +41,10 @@ def checkers():
     colors=0
     while t > 0:
         time.sleep(0.25)
-        if xx>7:
+        if xx>maxx-1:
             xx=0;
             yy+=1;
-            if yy>7:
+            if yy>maxy-1:
                 yy=0;
                 colors+=1;
             if colors>1:
