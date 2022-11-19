@@ -37,10 +37,10 @@ def checkers():
     colors=0
     while t > 0:
         time.sleep(0.25)
-        if xx>8:
+        if xx>7:
             xx=0;
             yy+=1;
-            if yy>8:
+            if yy>7:
                 yy=0;
                 colors+=1;
             if colors>1:
