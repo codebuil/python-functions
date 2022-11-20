@@ -6,17 +6,24 @@ from Tkinter import *
 import tkMessageBox;
 
 t=1
+varx=250
 root=Tk()
 sbitmaps=Canvas(root,bg="green",height=300,width=500)
 ball=sbitmaps.create_oval(0,0,20,20,fill="black")
 cursors=sbitmaps.create_rectangle(230,250,270,270,fill="white")
 
+def keys(event):
+	global varx
+	if event.keycode==114:
+		varx=varx+10;
+	if event.keycode==113:
+		varx=varx-10;
 def checkers():
     x=0
     y=0
     xt=8
     yt=8
-    varx=250
+    global varx
     global t;
     root.title("pong")            
     while t > 0:
@@ -33,7 +40,11 @@ def checkers():
 	if y> 240:
             t=0;
             root.title("game over")
-	varx=x
+        #varx=x
+        if varx>550:
+	        varx=550
+        if varx<5:
+	        varx=5
 	if varx>x-20 and varx<x+20 and y<250 and y>230:
             t=1;
             yt=-8;
@@ -46,6 +57,7 @@ def checkers():
 
 sbitmaps.pack() 
 thread.start_new_thread(checkers,())
+root.bind("<KeyPress>",keys)
 root.mainloop()            
 t=0
 time.sleep(3)
