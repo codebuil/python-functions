@@ -24,8 +24,7 @@ def sets(winx,winy,maxx,maxy):
 	yy=centers(winy,maxy)
 	rets=sbitmaps.create_rectangle(xx,yy,xx+maxx,yy+maxy,fill="white")
 def resizes(winx,winy,maxx,maxy):
-	print("x : " +str(winx)+" Y : "+str(winx))
-	sbitmaps.coords(rets,centers(winx,maxx),centers(winy,maxy),centers(winx,maxx)+winx,centers(winy,maxy)+winy)
+	sbitmaps.coords(rets,centers(winx,maxx),centers(winy,maxy),centers(winx,maxx)+maxx,centers(winy,maxy)+maxy)
 def checkers():
     global t
     tt=0;
