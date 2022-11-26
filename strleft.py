@@ -1,6 +1,9 @@
 #!/usr/bin/python
 def strleft(a,b):
-	a=a[0:b];
+	bb=len(a);
+	if b<bb:
+		bb=b
+	a=a[0:bb];
 	return a;
 
 print("\033c\033[42;30m\n");

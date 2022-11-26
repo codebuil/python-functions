@@ -1,6 +1,10 @@
 #!/usr/bin/python
 def strrigth(a,b):
-	a=a[len(a)-b:len(a)];
+	dd=len(a);
+	bb=dd-b;
+	if bb<0:
+		bb=0;
+	a=a[bb:dd];
 	return a;
 
 print("\033c\033[42;30m\n");
