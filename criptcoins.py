@@ -7,6 +7,7 @@ class movess:
 sizes11="";
 sizes16="";
 mmoves=[];	
+fileToOpen="moves.cvs";
 def strstring(a,b,c):
 	n=0;
 	for n in range(0,c):
@@ -56,6 +57,23 @@ def reportss(rp,tt,r0):
 		ttt=tt-rp.amount;
 	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes16,str(rp.amount))+"|"+strlset(sizes16,str(ttt)));
 	return ttt;
+def freports(files,n):
+	global mmoves;
+	files.write(mmoves[n].dates+","+mmoves[n].ref+","+mmoves[n].ref2+","+str(mmoves[n].amount)+"\n");
+def saves():
+	global mmoves;
+	ii=0;
+	i=len(mmoves);
+	n=0;
+	try:
+		f= open(fileToOpen, "w+");
+		if i>0:
+			for n in range(0,i):
+				freports(f,n);
+	except:
+		ii=0;
+	f.close();
+
 def reports(rp):
 	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes16,str(rp.amount)));
 def menuall():
@@ -81,11 +99,12 @@ def menuclient():
 
 def mainmenu():
 	whi=-1;
-	while whi!=3:
+	while whi!=4:
 		print("0-make transaction");
 		print("1-list all transactions");
 		print("2-list client");
-		print("3-exit");
+		print("3-save to cvs");	
+		print("4-exit");
 		whi=input();
 		if whi==0:
 			menutrans();
@@ -93,6 +112,9 @@ def mainmenu():
 			menuall();
 		if whi==2:
 			menuclient();
+		if whi==3:
+			saves();
+
 print("\033c\033[42;30m\n");
 definess();
 mainmenu();
