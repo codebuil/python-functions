@@ -7,7 +7,7 @@ def add(a,b):
 	cc=range(0,bb);
 	for n in cc:
 		dd=a[n];
-		dd=chr(ord(dd)+b);
+		dd=chr((ord(dd)+b) & 255);
 		aa+=dd;
 	return aa;
 codes=10;
