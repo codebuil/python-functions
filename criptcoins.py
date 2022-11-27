@@ -8,6 +8,10 @@ sizes11="";
 sizes16="";
 mmoves=[];	
 fileToOpen="moves.cvs";
+winsep="\r\n";
+macsep="\r";
+lunixsep="\n";
+seps=lunixsep;
 def strstring(a,b,c):
 	n=0;
 	for n in range(0,c):
@@ -55,7 +59,7 @@ def reportss(rp,tt,r0):
 		ttt=tt+rp.amount;
 	else:
 		ttt=tt-rp.amount;
-	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes16,str(rp.amount))+"|"+strlset(sizes16,str(ttt)));
+	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes11,str(rp.amount))+"|"+strlset(sizes11,str(ttt)));
 	return ttt;
 def freports(files,n):
 	global mmoves;
@@ -73,9 +77,51 @@ def saves():
 	except:
 		ii=0;
 	f.close();
+def collstrans(nn):
+	global mmoves;
+	poss=0;	
+	mmoves=mmoves+[movess()];
+	poss=len(mmoves)-1;
+	ii=0;	
+	ii=len(nn);
+	if ii>3:
+		mmoves[poss].dates=nn[0];
+		mmoves[poss].ref=nn[1];
+		mmoves[poss].ref2=nn[2];
+		mmoves[poss].amount=eval(nn[3]);
 
+def colls(nn):
+	n=0;
+	ii=0;
+	nnn=nn.split(",");
+	ii=len(nnn);
+	if ii>3:
+		collstrans(nnn);
+	
+def lfile():
+	global mmoves;
+	mmoves=[];
+	rvalue=[];
+	rrvalue="";
+	ii=0;
+	n=0;
+	try:
+		f= open(fileToOpen, "r");
+		rrvalue=f.read();
+		f.close();
+		rvalue=rrvalue.split(seps);
+	except:
+		ii=0;
+	ii=len(rvalue);
+	if ii>0:
+		for n in range(0,ii):
+			colls(rvalue[n]);
+def loads():
+	global mmoves;
+	mmoves=[];	
+	lfile();
 def reports(rp):
-	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes16,str(rp.amount)));
+	print (strlset(sizes16,rp.dates)+"|"+strlset(sizes11,rp.ref)+"|"+strlset(sizes11,rp.ref2)+"|"+strlset(sizes11,str(rp.amount)));
 def menuall():
 	print("list all");
 	global mmoves;
@@ -99,12 +145,13 @@ def menuclient():
 
 def mainmenu():
 	whi=-1;
-	while whi!=4:
+	while whi!=5:
 		print("0-make transaction");
 		print("1-list all transactions");
 		print("2-list client");
 		print("3-save to cvs");	
-		print("4-exit");
+		print("4-load from cvs");	
+		print("5-exit");
 		whi=input();
 		if whi==0:
 			menutrans();
@@ -114,7 +161,8 @@ def mainmenu():
 			menuclient();
 		if whi==3:
 			saves();
-
+		if whi==4:
+			loads();
 print("\033c\033[42;30m\n");
 definess();
 mainmenu();
