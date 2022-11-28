@@ -128,8 +128,10 @@ def menuall():
 	vv=0;
 	n=0;
 	le=len(mmoves);
+	print(strstring("","-",80));
 	for n in range(0,le):
 		reports(mmoves[n]);
+	print(strstring("","-",80));
 def menuclient():
 	print("list client ref?:");
 	i=raw_input()
@@ -137,21 +139,30 @@ def menuclient():
 	vv=0;
 	n=0;
 	le=len(mmoves);
+	print(strstring("","-",80));
 	for n in range(0,le):
 		if mmoves[n].ref==i:
 			vv=reportss(mmoves[n],vv,1);
 		if mmoves[n].ref2==i:
 			vv=reportss(mmoves[n],vv,0);
-
+	print(strstring("","-",80));
+def changename():
+	try:
+		print("file cvs name")
+		i=raw_input()
+		fileToOpen=i;
+	except:
+		fileToOpen="moves.cvs";
 def mainmenu():
 	whi=-1;
-	while whi!=5:
+	while whi!=6:
 		print("0-make transaction");
 		print("1-list all transactions");
 		print("2-list client");
 		print("3-save to cvs");	
 		print("4-load from cvs");	
-		print("5-exit");
+		print("5-change cvs name");	
+		print("6-exit");
 		whi=input();
 		if whi==0:
 			menutrans();
@@ -163,6 +174,8 @@ def mainmenu():
 			saves();
 		if whi==4:
 			loads();
+		if whi==5:
+			changename();
 print("\033c\033[42;30m\n");
 definess();
 mainmenu();
