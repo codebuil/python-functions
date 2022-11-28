@@ -6,12 +6,17 @@ class movess:
 	amount=0.00;
 sizes11="";
 sizes16="";
+sizesbr="";
+bar=80;
 mmoves=[];	
 fileToOpen="moves.cvs";
 winsep="\r\n";
 macsep="\r";
 lunixsep="\n";
 seps=lunixsep;
+def brbar():
+	print(sizesbr);
+sizesbr
 def strstring(a,b,c):
 	n=0;
 	for n in range(0,c):
@@ -35,8 +40,10 @@ def strlset(a,b):
 def definess():
 	global sizes11;
 	global sizes16;
+	global sizesbr;
 	sizes11=strspace("",11);
 	sizes16=strspace("",16);
+	sizesbr=strstring("","-",bar)
 def menutrans():
 	global mmoves;
 	print("data: ?");
@@ -128,10 +135,10 @@ def menuall():
 	vv=0;
 	n=0;
 	le=len(mmoves);
-	print(strstring("","-",80));
+	brbar();
 	for n in range(0,le):
 		reports(mmoves[n]);
-	print(strstring("","-",80));
+	brbar();
 def menuclient():
 	print("list client ref?:");
 	i=raw_input()
@@ -139,13 +146,13 @@ def menuclient():
 	vv=0;
 	n=0;
 	le=len(mmoves);
-	print(strstring("","-",80));
+	brbar();
 	for n in range(0,le):
 		if mmoves[n].ref==i:
 			vv=reportss(mmoves[n],vv,1);
 		if mmoves[n].ref2==i:
 			vv=reportss(mmoves[n],vv,0);
-	print(strstring("","-",80));
+	brbar();
 def changename():
 	global fileToOpen;
 	try:
