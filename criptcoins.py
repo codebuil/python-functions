@@ -147,6 +147,7 @@ def menuclient():
 			vv=reportss(mmoves[n],vv,0);
 	print(strstring("","-",80));
 def changename():
+	global fileToOpen;
 	try:
 		print("file cvs name")
 		i=raw_input()
