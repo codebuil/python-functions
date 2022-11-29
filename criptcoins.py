@@ -41,9 +41,20 @@ def definess():
 	global sizes11;
 	global sizes16;
 	global sizesbr;
+	global fileToOpen;
 	sizes11=strspace("",11);
 	sizes16=strspace("",16);
-	sizesbr=strstring("","-",bar)
+	sizesbr=strstring("","-",bar);
+	try:
+		f=open("config.txt","r");
+	except:
+		f=open("config.txt","w+");
+		f.write(fileToOpen);
+		f.close()
+		f=open("config.txt","r");
+	fileToOpen=f.read();
+	f.close();	
+			
 def menutrans():
 	global mmoves;
 	print("data: ?");
@@ -161,6 +172,9 @@ def changename():
 		fileToOpen=i;
 	except:
 		fileToOpen="moves.cvs";
+	f=open("config.txt","w+");
+	f.write(fileToOpen);
+	f.close()
 def mainmenu():
 	whi=-1;
 	while whi!=6:
