@@ -27,8 +27,8 @@ def sets(winx,winy):
 		rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="green")]
 		print (nx)
 		print (ny)
-		ny=int(ny/2);
-		nx=int(nx/2);
+		ny=int(ny*14/16);
+		nx=int(nx*14/16);
 		if ny<16 or nx<16:
 			ny=0;
 			nx=0;
