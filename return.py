@@ -12,6 +12,7 @@ winx=500
 maxy=120
 winy=300
 t=1
+memory=[0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0];
 root=Tk()
 sbitmaps=Canvas(root,bg="green",height=winy,width=winx)
 def getn(maxs):
@@ -25,13 +26,11 @@ def sets(winx,winy):
 	ny=winy
 	cc=0;
 	while nx >0:
-		if cc==0:		
+		if memory[cc]==0:		
 			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="green")]
 		else:		
 			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="black")]		
 		cc=cc+1;
-		if cc>1:
-			cc=0;
 		ny=int(ny*14/16);
 		nx=int(nx*14/16);
 		if ny<16 or nx<16:
@@ -44,7 +43,8 @@ def checkers():
     while t >0:
         tt=0;
 sbitmaps.pack() 
-thread.start_new_thread(checkers,())
-root.mainloop()            
+thread.start_new_thread(checkers,());
+print(memory);
+root.mainloop();
 t=0
 time.sleep(1)
