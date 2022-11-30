@@ -23,10 +23,15 @@ def sets(winx,winy):
 	n=0;
 	nx=winx
 	ny=winy
+	cc=0;
 	while nx >0:
-		rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="green")]
-		print (nx)
-		print (ny)
+		if cc==0:		
+			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="green")]
+		else:		
+			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="black")]		
+		cc=cc+1;
+		if cc>1:
+			cc=0;
 		ny=int(ny*14/16);
 		nx=int(nx*14/16);
 		if ny<16 or nx<16:
