@@ -13,38 +13,55 @@ maxy=120
 winy=300
 t=1
 memory=[0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0];
+xx=[];
+yy=[];
 root=Tk()
 sbitmaps=Canvas(root,bg="green",height=winy,width=winx)
+def getxy(winx,winy):
+	global xx;
+	global yy;
+	n=0;
+	nx=winx
+	ny=winy
+	while nx >0:
+		ny=int(ny*14/16);
+		nx=int(nx*14/16);
+		xx=xx+[nx];
+		yy=yy+[ny];
+		if ny<16 or nx<16:
+			ny=0;
+			nx=0;
+	return len(xx);
 def getn(maxs):
 	return random.randrange(0,maxs,1)
 def centers(ww,b):
 	return (ww/2)-(b/2)
-def sets(winx,winy):
-	global rets
-	n=0;
-	nx=winx
-	ny=winy
-	cc=0;
-	while nx >0:
-		if memory[cc]==0:		
-			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="green")]
-		else:		
-			rets=rets+[sbitmaps.create_rectangle(centers(winx,nx),centers(winy,ny),centers(winx,nx)+nx,centers(winy,ny)+ny,fill="black")]		
-		cc=cc+1;
-		ny=int(ny*14/16);
-		nx=int(nx*14/16);
-		if ny<16 or nx<16:
-			ny=0;
-			nx=0;
+def creatRoom(winx,winy,n):
+		global rets;
+		global xx;
+		global yy;
+		colors="";
+		if memory[n]==0:		
+			colors="black";		
+		else:
+			colors="green";
+		rets=rets+[sbitmaps.create_rectangle(centers(winx,xx[n]),centers(winy,yy[n]),centers(winx,xx[n])+xx[n],centers(winy,yy[n])+yy[n],fill=colors)]
 def checkers():
-    global t
-    tt=0;
-    sets(winx,winy)
-    while t >0:
-        tt=0;
+	global t
+	global winx;
+	global winy;
+	tt=0;
+	ll=0;
+	n=0;
+	nn=0;
+	ll=getxy(winx,winy);
+	nn=range(0,ll);
+	for n in nn:
+		creatRoom(winx,winy,n);
+	while t >0:
+		tt=0;
 sbitmaps.pack() 
 thread.start_new_thread(checkers,());
-print(memory);
 root.mainloop();
 t=0
 time.sleep(1)
