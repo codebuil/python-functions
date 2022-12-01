@@ -26,6 +26,7 @@ def refreshRoad():
 	global yy;
 	sbitmaps.coords(rets[0],xx[0]+maxx,yy[0],xx[1]+maxx,yy[1]+maxy);
 	sbitmaps.coords(rets[1],xx[2]+maxx,yy[2]+maxy,xx[3]+maxx,yy[3]);
+	sbitmaps.coords(rets[2],xx[4],yy[4]+maxy,xx[5],yy[5]+maxy);
 def movess():
 	global maxx;
 	global maxy;
@@ -64,11 +65,16 @@ def defs():
 	yy=yy+[0];
 	xx=xx+[winx];
 	yy=yy+[winy];
+	xx=xx+[0];
+	yy=yy+[0];
+	xx=xx+[winx];
+	yy=yy+[0];
 def createRoad():
 	global rets;
 	colors="black";
 	rets=rets+[sbitmaps.create_line(xx[0],yy[0],xx[1],yy[1],fill=colors)];
 	rets=rets+[sbitmaps.create_line(xx[2],yy[2],xx[3],yy[3],fill=colors)];
+	rets=rets+[sbitmaps.create_line(xx[4],yy[4],xx[5],yy[5],fill=colors)];
 def checkers():
 	global t
 	global winx;
