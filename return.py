@@ -24,10 +24,10 @@ def getxy(winx,winy):
 	nx=winx
 	ny=winy
 	while nx >0:
-		ny=int(ny*14/16);
-		nx=int(nx*14/16);
 		xx=xx+[nx];
 		yy=yy+[ny];
+		ny=int(ny*14/16);
+		nx=int(nx*14/16);
 		if ny<16 or nx<16:
 			ny=0;
 			nx=0;
