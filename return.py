@@ -13,6 +13,7 @@ maxy=120
 winy=300
 t=1
 memory=[0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0];
+inverter=0;
 xx=[];
 yy=[];
 root=Tk()
@@ -36,6 +37,24 @@ def getn(maxs):
 	return random.randrange(0,maxs,1)
 def centers(ww,b):
 	return (ww/2)-(b/2)
+def changeRoomColor(n,mm):
+	global rets;
+	global memory;
+	colors="";
+	if mm==0 and memory[n]==0:
+		colors="black";		
+	if mm==0 and memory[n]==1:
+		colors="green";
+	if mm==1 and memory[n]==0:		
+		colors="green";		
+	if mm==1 and memory[n]==1:
+			colors="black";
+	sbitmaps.itemconfig(rets[n],fill=colors)	
+def movess():
+	global inverter;
+	inverter=inverter+1;
+	if inverter>1:
+		inverter=0;
 def creatRoom(winx,winy,n):
 		global rets;
 		global xx;
@@ -50,6 +69,7 @@ def checkers():
 	global t
 	global winx;
 	global winy;
+	global inverter;
 	tt=0;
 	ll=0;
 	n=0;
@@ -59,6 +79,10 @@ def checkers():
 	for n in nn:
 		creatRoom(winx,winy,n);
 	while t >0:
+		for n in nn:
+			changeRoomColor(n,inverter);
+		time.sleep(0.25);
+		movess();
 		tt=0;
 sbitmaps.pack() 
 thread.start_new_thread(checkers,());
